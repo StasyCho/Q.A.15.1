@@ -31,7 +31,7 @@ public class TicketManagerTest {
     public void searchByDeparture() {
 
         Ticket[] expected = {t7, t1, t4, t2, t8, t5};
-        Ticket[] actual = manager.searchByDeparture("MOW", "LED");
+        Ticket[] actual = manager.searchByDeparture("MOW", "LED", );
 
         Assertions.assertArrayEquals(expected, actual);
 

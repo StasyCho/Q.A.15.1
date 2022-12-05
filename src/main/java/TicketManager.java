@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Comparator;
 
 public class TicketManager {
 
@@ -12,10 +12,10 @@ public class TicketManager {
         repo.save(item);
     }
 
-    public Ticket[] searchByDeparture(String from, String to) {
+    public Ticket[] searchByDeparture(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] result = new Ticket[0];
         for (Ticket item : repo.findAll()) {
-            if (matches(item, from, to)) {
+            if (matches(item, from, to, comparator)) {
                 Ticket[] tmp = new Ticket[result.length + 1];
                 for (int i = 0; i < result.length; i++) {
                     tmp[i] = result[i];
@@ -27,7 +27,7 @@ public class TicketManager {
         return result;
     }
 
-    public boolean matches(Ticket ticket, String from, String to) {
+    public boolean matches(Ticket ticket, String from, String to, Comparator<Ticket> comparator) {
         if (ticket.getTo().equals(to)) {
             if (ticket.getFrom().equals(from)) {
                 return true;
