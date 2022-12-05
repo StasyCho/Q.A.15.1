@@ -1,4 +1,4 @@
-package org.example;
+import java.util.Arrays;
 
 public class TicketRepository {
 
@@ -18,6 +18,9 @@ public class TicketRepository {
     }
 
     public void removeById(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException(id);
+        }
         Ticket[] tmp = new Ticket[items.length - 1];
         int copyToIndex = 0;
         for (Ticket item : items) {
@@ -27,5 +30,13 @@ public class TicketRepository {
             }
         }
         items = tmp;
+    }
+    private Ticket findById(int id) {
+        for (Ticket product : items) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 }
