@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class TicketManager {
@@ -24,6 +26,7 @@ public class TicketManager {
                 result = tmp;
             }
         }
+        Arrays.sort(result, comparator);
         return result;
     }
 
@@ -34,6 +37,10 @@ public class TicketManager {
             }
         }
         return false;
+    }
+
+    public void removeById(int id) {
+        repo.removeById(id);
     }
 }
 
