@@ -34,7 +34,42 @@ public class TicketManagerTest {
         Ticket[] actual = manager.searchByDeparture("MOW", "LED");
 
         Assertions.assertArrayEquals(expected, actual);
+    }
 
+    @Test
+    public void searchByDeparture2() {
+
+        Ticket[] expected = {t3};
+        Ticket[] actual = manager.searchByDeparture("MOW", "OVB");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchByDeparture3() {
+
+        Ticket[] expected = {};
+        Ticket[] actual = manager.searchByDeparture("OVB", "OVB");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void removeById() {
+
+        manager.removeById(5);
+
+        Ticket[] expected = {t1, t2, t3, t4, t6, t7, t8};
+        Ticket[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void notRemoveById() {
+
+        Assertions.assertThrows(NotFoundException.class,
+                () -> manager.removeById(9));
     }
 }
 

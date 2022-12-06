@@ -24,6 +24,7 @@ public class TicketManager {
                 result = tmp;
             }
         }
+        Arrays.sort(result);
         return result;
     }
 
@@ -34,6 +35,9 @@ public class TicketManager {
             }
         }
         return false;
+    }
+    public void removeById(int id) {
+        repo.removeById(id);
     }
 }
 

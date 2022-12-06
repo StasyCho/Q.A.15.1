@@ -11,4 +11,5 @@ public class Main {
         Ticket[] tickets = {t1, t2};
         Arrays.sort(tickets);
     }
+
 }
